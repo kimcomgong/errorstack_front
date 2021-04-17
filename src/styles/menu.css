@@ -1,0 +1,28 @@
+.menu {
+    display: flex;
+    border-bottom: 1px solid#d1d8e4;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.errorstack {
+    color: rgb(173, 36, 36);
+    background: white;
+    border: 10px;
+    font-size: 25px;
+}
+.btnbox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* */
+}
+.btn {
+    color: black;
+    background: white;
+    border: 10px;
+    font-size: 25px;
+}
+.btn:hover {
+    color: rgb(173, 36, 36);
+}

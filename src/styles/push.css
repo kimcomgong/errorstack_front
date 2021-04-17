@@ -1,0 +1,41 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tunit {
+    height: 30px;
+    width: 400px;
+    margin: 5px;
+    font-size: large;
+}
+
+.body {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bunit {
+    border-color: rgba(153, 153, 153, 0.116);
+    border-bottom-color: rgba(88, 88, 88, 0.26);
+    resize: none;
+    height: 300px;
+    width: 400px;
+    margin: 5px;
+    font-size: large;
+}
+
+.foot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

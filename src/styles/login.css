@@ -1,0 +1,20 @@
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(146, 146, 146, 0.562);
+}
+
+.login {
+    text-align: center;
+    width: 480px;
+    height: 621px;
+    background-color: white;
+    position: relative;
+    box-sizing: border-box;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+}
