@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { firestore, auth } from "../firebase";
 import { Link } from 'react-router-dom'
 import '../styles/push.css'
 
@@ -7,6 +6,7 @@ const Push = () => {
     const [sign, setSign] = useState(false)
     const [email, setEmail] = useState('')
 
+    /*
     useEffect(()=> {
         auth.onAuthStateChanged(function(user) {
           if(user) {
@@ -42,7 +42,8 @@ const Push = () => {
             body: ''
         })
     }
-
+    */
+    /*
     const summit = () => {
         if (tag !== "" && code !=="" && body !=="") {
             firestore
@@ -56,7 +57,9 @@ const Push = () => {
             alert("Please Check Your PUSH. :(")
         }
     }
+    */
 
+    /*
     return (
         <div className="form">
             <p> 등록자: {email}</p>
@@ -72,6 +75,7 @@ const Push = () => {
             </div>
         </div>
     )
+    */
 }
 
 export default Push;

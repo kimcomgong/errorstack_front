@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { auth } from '../firebase'
 import '../styles/login.css'
 
 const Login = (props) => {
@@ -31,6 +30,7 @@ const Login = (props) => {
         })
     }
 
+    /*
     const register = () => {
         auth.createUserWithEmailAndPassword(jid, jpw)
             .then((user) => {
@@ -43,7 +43,9 @@ const Login = (props) => {
                 inputsReset()
             })
     }
+    */
 
+    /*
     const signin = () => {
         auth.signInWithEmailAndPassword(id, pw)
             .then((user) => {
@@ -57,6 +59,7 @@ const Login = (props) => {
                 inputsReset()
             })
     }
+    */
 
     return (
         <>
@@ -76,7 +79,7 @@ const Login = (props) => {
                             onChange={onChange}
                             value={pw}
                             placeholder="PW" />
-                        <button onClick={() => signin()}> 로그인 </button>
+                        <button onClick={() => {}}> 로그인 </button>
                         <br />
                         <div> 회원이 아닌 경우, <button onClick={() => clickJoin()}> 회원가입 </button> </div>
                         {
@@ -97,7 +100,7 @@ const Login = (props) => {
                                         onChange={onChange}
                                         value={jpw}
                                         placeholder="PW" />
-                                    <button onClick={() => register()}> 회원가입 </button>
+                                    <button onClick={() => {}}> 회원가입 </button>
                                 </div>
                             ) : null
                         }

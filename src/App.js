@@ -5,7 +5,6 @@ import { Home, Push, Mypage, Community, Counter } from './pages'
 import { Menu, Footer } from './components'
 import { About, Tos, Pp } from './pages/infos'
 import { Switch, Route } from 'react-router-dom'
-import { auth } from './firebase'
 
 function App() {
   const [login, setLogin] = useState(false)
@@ -13,17 +12,6 @@ function App() {
   const togModal = () => {
     setLogin(prev => !prev)
   }
-
-  // 로그인 확인
-  useEffect(()=> {
-    auth.onAuthStateChanged(function(user) {
-      if(user) {
-        setSign(true)
-      } else {
-        setSign(false)
-      }
-    })
-  }, [])
 
   return (
     <div className="app">

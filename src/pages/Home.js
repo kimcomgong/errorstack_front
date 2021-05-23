@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { firestore } from "../firebase";
 import { Link } from 'react-router-dom'
 import '../styles/home.css'
 
@@ -7,28 +6,13 @@ const Home = () => {
     const [list, setList] = useState([])
 
     // Home 데이터 패치 함수
-    const fetch = useCallback(() => {
-        let temp = []
-        firestore
-            .collection("stacktest")
-            .get()
-            .then((cols) => {
-                cols.forEach((col) => {
-                    temp.push({
-                        id: col.id,
-                        tag: col.data().tag,
-                        code: col.data().code,
-                        body: col.data().body,
-                        email: col.data().email })
-                })
-                setList(temp)
-            })
-    }, [])
 
+    /*
     useEffect(() => {
         fetch()
     }, [fetch])
-
+    */
+   
     return (
         <div>
             <div className="main">
