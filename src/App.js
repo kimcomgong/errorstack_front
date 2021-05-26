@@ -1,8 +1,8 @@
-import './App.css'
+import './styles/App.css'
 import { useState, useEffect } from 'react'
 import { Login } from './modals'
 import { Home, Push, Mypage, Community, Counter } from './pages'
-import { Menu, Footer } from './components'
+import { Menu, Footer } from './layouts'
 import { About, Tos, Pp } from './pages/infos'
 import { Switch, Route } from 'react-router-dom'
 
