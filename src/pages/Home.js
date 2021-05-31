@@ -3,30 +3,31 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import '../styles/home.css'
 
+
+/*
+const fetch = () => {
+    axios.get("main/")
+        .then(res => {
+            setMain("check")
+            console.log(res.data)
+        })
+}
+*/
+
+
 const Home = () => {
     const [list, setList] = useState([])
-    const [main, setMain] = useState("-")
-    const [test, setTest] = useState("-")
+    const [check, setCheck] = useState("-")
 
     const fetch = () => {
         axios.get("main/")
             .then(res => {
-                setMain("check")
+                setCheck("check")
                 console.log(res.data)
             })
     }
-
-    const fetch2 = () => {
-        axios.get("test/")
-            .then(res => {
-                setTest("check")
-                console.log(res.data)
-            })
-    }
-
     useEffect(() => {
         fetch()
-        fetch2()
     }, [])
    
     return (
@@ -37,9 +38,7 @@ const Home = () => {
                     <img className="logo" alt="errorstack-logo" width="550" height="75" src="./logo/errorstack.png" />
                 </Link>
                 <br />
-                <p> {main} </p>
-                <br />
-                <p> {test} </p>
+                <p> {check} </p>
                 <br />
                 {/* 홈 화면 검색 창 */}
                 <div className="search">

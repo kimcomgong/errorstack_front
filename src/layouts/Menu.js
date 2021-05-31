@@ -8,6 +8,8 @@ import '../styles/menu.css'
 const Menu = (props) => {
     const [cont, setCont] = useState(0)
     let buttons = []
+
+    //로그인 모달 팝업
     const signin = () => {
         props.openModal()
     }
