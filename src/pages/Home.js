@@ -17,17 +17,8 @@ const fetch = () => {
 
 const Home = () => {
     const [list, setList] = useState([])
-    const [check, setCheck] = useState("-")
 
-    const fetch = () => {
-        axios.get("main/")
-            .then(res => {
-                setCheck("check")
-                console.log(res.data)
-            })
-    }
     useEffect(() => {
-        fetch()
     }, [])
    
     return (
@@ -37,9 +28,7 @@ const Home = () => {
                 <Link to="/">
                     <img className="logo" alt="errorstack-logo" width="550" height="75" src="./logo/errorstack.png" />
                 </Link>
-                <br />
-                <p> {check} </p>
-                <br />
+
                 {/* 홈 화면 검색 창 */}
                 <div className="search">
                     <input className="input" placeholder="ERROR IDENTIFIER, 사용된 언어, 관련 태그 등을 입력하세요." />

@@ -1,12 +1,9 @@
 import React, { useState } from 'react'
 import '../styles/login.css'
+import axios from 'axios'
 
 const Login = (props) => {
     const [join, setJoin] = useState(false)
-    const clickJoin = () => {
-        setJoin(!join)
-    }
-    
     const [inputs, setInputs] = useState({
         id: '',
         pw: '',
@@ -15,6 +12,11 @@ const Login = (props) => {
     })
 
     const { id, pw, jid, jpw } = inputs
+
+    const clickJoin = () => {
+        setJoin(!join)
+    }
+
     const onChange = (e) => {
         const { value, name } = e.target;
         setInputs({
@@ -26,41 +28,66 @@ const Login = (props) => {
     const inputsReset = () => {
         setInputs({
             id: '',
-            pw: ''
+            pw: '',
+            jid: '',
+            jpw: ''
         })
     }
 
-    /*
-    const register = () => {
-        auth.createUserWithEmailAndPassword(jid, jpw)
-            .then((user) => {
-                alert("회원가입 성공")
-                clickJoin()
-                inputsReset()
-            })
-            .catch((error) => {
-                alert("회원가입 실패")
-                inputsReset()
-            })
-    }
-    */
+    //로그인
+    const login = () => {
+        var request = {
+            "email": id,
+            "password": pw
+        }
 
-    /*
-    const signin = () => {
-        auth.signInWithEmailAndPassword(id, pw)
-            .then((user) => {
-                alert("로그인 성공")
+        var a = JSON.stringify(request)
+        var headers = {
+            'Content-Type': 'application/json'
+        }
+
+        axios.post("api/login", a, { headers })
+            .then(res => {
+                localStorage.setItem('token', res.data)
+                localStorage.setItem('E-mail', request.email)
+                alert("로그인을 성공하였습니다.")
                 inputsReset()
                 props.closeModal()
                 window.location.replace("/")
             })
-            .catch((error) => {
-                alert("로그인 실패")
+            .catch(err => {
+                alert("로그인을 실패하였습니다.")
                 inputsReset()
             })
     }
-    */
 
+    //회원가입
+    const register = () => {
+        var request = {
+            email: jid,
+            password: jpw,
+        }
+        var a = JSON.stringify(request)
+        var headers = {
+            'Content-Type': 'application/json'
+        }
+
+        axios.post("api/register", a, { headers })
+            .then(
+                res => {
+                    alert("회원가입을 성공하였습니다.");
+                    clickJoin()
+                    inputsReset()
+                }
+            )
+            .catch(
+                err => {
+                    alert("회원가입을 실패하였습니다.");
+                    inputsReset()
+                }
+            )
+    }
+    
     return (
         <>
             {props.login ? (
@@ -79,7 +106,7 @@ const Login = (props) => {
                             onChange={onChange}
                             value={pw}
                             placeholder="PW" />
-                        <button onClick={() => {}}> 로그인 </button>
+                        <button onClick={() => login()}> 로그인 </button>
                         <br />
                         <div> 회원이 아닌 경우, <button onClick={() => clickJoin()}> 회원가입 </button> </div>
                         {
@@ -100,7 +127,7 @@ const Login = (props) => {
                                         onChange={onChange}
                                         value={jpw}
                                         placeholder="PW" />
-                                    <button onClick={() => {}}> 회원가입 </button>
+                                    <button onClick={() => register()}> 회원가입 </button>
                                 </div>
                             ) : null
                         }

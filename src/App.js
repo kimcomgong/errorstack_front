@@ -6,14 +6,57 @@ import { Menu, Footer } from './layouts'
 import { About, Tos, Pp } from './pages/infos'
 import { Switch, Route } from 'react-router-dom'
 
+import axios from 'axios'
+
+/*
+const fetch = () => {
+    axios.get("main/")
+        .then(res => {
+            setMain("check")
+            console.log(res.data)
+        })
+}
+*/
+
 function App() {
   const [login, setLogin] = useState(false)
   const [sign, setSign] = useState(false)
 
-
   const togModal = () => {
     setLogin(prev => !prev)
   }
+
+  const getJwt = () => {
+     var headers = {
+      'Content-Type': 'application/json',
+      'JWT': localStorage.getItem('token')
+    }
+
+    axios.get("api/auth", { headers })
+      .then(res => {
+        if (res.data === localStorage.getItem('E-mail')) {
+          localStorage.setItem('E-mail', res.data)
+        }
+        else {
+          localStorage.removeItem('token')
+          localStorage.removeItem('E-mail')
+        }
+      })
+      .catch(err => {
+        localStorage.removeItem('token')
+        localStorage.removeItem('E-mail')
+      })
+
+    // 비로그인시 로그인 메뉴 활성화
+    if (localStorage.getItem("E-mail") !== null)
+      setSign(true)
+    else
+      setSign(false)
+  }
+
+  useEffect(() => {
+    getJwt()
+  }, [])
 
   return (
     <div className="app">
