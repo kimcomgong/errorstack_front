@@ -46,7 +46,7 @@ const Login = (props) => {
             'Content-Type': 'application/json'
         }
 
-        axios.post("api/login", a, { headers })
+        axios.post("api/login", a , { headers })
             .then(res => {
                 localStorage.setItem('token', res.data)
                 localStorage.setItem('E-mail', request.email)
@@ -72,7 +72,7 @@ const Login = (props) => {
             'Content-Type': 'application/json'
         }
 
-        axios.post("api/register", a, { headers })
+        axios.post("api/register", a , { headers })
             .then(
                 res => {
                     alert("회원가입을 성공하였습니다.");
