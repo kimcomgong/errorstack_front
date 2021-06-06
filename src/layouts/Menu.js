@@ -1,17 +1,23 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/menu.css'
 
 //                    <Link to="/community"><button className="btn" > COMMUNITY </button></Link>
-//                    <Link to="/community"><button className="btn" > COMMUNITY </button></Link>
+//                    <Link to="/counter"><button className="btn" > 반례스택 </button></Link>
 
 const Menu = (props) => {
-    const [cont, setCont] = useState(0)
     let buttons = []
 
     //로그인 모달 팝업
     const signin = () => {
         props.openModal()
+    }
+
+    const logout = () => {
+        localStorage.removeItem('token')
+        localStorage.removeItem('E-mail')
+        alert("로그아웃 하였습니다.")
+        window.location.replace("/")
     }
 
     if (!props.sign) {
@@ -20,7 +26,6 @@ const Menu = (props) => {
                 <nav className="btnbox">
                     <Link to="/"><button className="btn" > ERRORSTACK </button></Link>
                     <Link to="/push"><button className="btn" > PUSH! </button></Link>
-                    <Link to="/counter"><button className="btn" > 반례스택 </button></Link>
                 </nav>
                 <nav className="btnbox">
                     <button className="btn" onClick={() => signin()} > SIGNIN </button>
@@ -33,12 +38,10 @@ const Menu = (props) => {
                 <nav className="btnbox">
                     <Link to="/"><button className="btn" > ERRORSTACK </button></Link>
                     <Link to="/push"><button className="btn" > PUSH! </button></Link>
-                    <Link to="/counter"><button className="btn" > 반례스택 </button></Link>
                 </nav>
                 <nav className="btnbox">
-                    <p> [기여도 - { cont }] </p>
                     <Link to="/mypage"><button className="btn"> 내정보 </button></Link>
-                    <button className="btn" onClick={()=>{}}> 로그아웃 </button>
+                    <button className="btn" onClick={() => logout()}> 로그아웃 </button>
                 </nav>
             </div>
         )

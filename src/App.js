@@ -1,22 +1,12 @@
 import './styles/App.css'
 import { useState, useEffect } from 'react'
 import { Login } from './modals'
-import { Home, Push, Mypage, Community, Counter } from './pages'
+import { Home, Push, Mypage, Community, Counter, StackViewer } from './pages'
 import { Menu, Footer } from './layouts'
 import { About, Tos, Pp } from './pages/infos'
 import { Switch, Route } from 'react-router-dom'
 
 import axios from 'axios'
-
-/*
-const fetch = () => {
-    axios.get("main/")
-        .then(res => {
-            setMain("check")
-            console.log(res.data)
-        })
-}
-*/
 
 function App() {
   const [login, setLogin] = useState(false)
@@ -27,6 +17,8 @@ function App() {
   }
 
   const getJwt = () => {
+    if(localStorage.getItem('token') === null) return;
+
      var headers = {
       'Content-Type': 'application/json',
       'JWT': localStorage.getItem('token')
@@ -38,13 +30,17 @@ function App() {
           localStorage.setItem('E-mail', res.data)
         }
         else {
+          alert("토큰이 유효하지 않아 로그아웃 합니다.")
           localStorage.removeItem('token')
           localStorage.removeItem('E-mail')
+          window.location.replace("/")
         }
       })
       .catch(err => {
+        alert("토큰이 유효하지 않아 로그아웃 합니다.")
         localStorage.removeItem('token')
         localStorage.removeItem('E-mail')
+        window.location.replace("/")
       })
 
     // 비로그인시 로그인 메뉴 활성화
@@ -68,6 +64,7 @@ function App() {
         <Route path="/counter" component={Counter} />
         <Route path="/mypage" component={Mypage} />
         <Route path="/about" component={About} />
+        <Route path="/stackviewer" component={StackViewer} />
         <Route path="/tos" component={Tos} />
         <Route path="/pp" component={Pp} />
       </Switch>

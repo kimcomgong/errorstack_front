@@ -5,8 +5,9 @@ import Root from './Root'
 import reportWebVitals from './reportWebVitals'
 import axios from 'axios'
 
-axios.defaults.baseURL = 'https://18.220.24.219:8443/'
-//axios.defaults.baseURL = 'https://localhost:8443/'
+//axios.defaults.baseURL = 'https://18.220.24.219:8443/'
+axios.defaults.baseURL = 'http://localhost:8080/'
+
 ReactDOM.render(
   <React.StrictMode>
     <Root />

@@ -10,7 +10,7 @@ const Footer = () => {
                 <p> | </p>
                 <a className="click" href="https://kimce.tistory.com">Developer Blog</a>
                 <p> | </p>
-                <a className="click" href="https://join.slack.com/t/errorstack/shared_invite/zt-m2s5oo75-aPHem84CSIWKrZGlgOfd0">Slack</a>
+                <a className="click" href="https://join.slack.com/t/errorstack/shared_invite/zt-r8h7q1t2-xe~JOGez1ZOtxE6lMHWh3g">Slack</a>
                 <p> | </p>
                 <Link className="click" to="/tos">이용규칙</Link>
                 <p> | </p>

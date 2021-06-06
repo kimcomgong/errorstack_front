@@ -1,0 +1,36 @@
+.viewerType {
+    display: flex;
+    color: rgb(136, 136, 136);
+    font-size: small;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.viewerTypeUnit {
+    margin: 1px;
+}
+
+.viewerMain {
+    border-radius: 2px;
+    width: 550px;
+    /* height: 350px; */
+    background-color: rgb(243, 243, 243);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.viewerMainUnit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ffont {
+    /* margin: 1px; */
+}
+
+.ffont_t {
+    color: rgb(136, 136, 136);
+}

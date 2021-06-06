@@ -1,23 +1,40 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import axios from 'axios'
 import '../styles/push.css'
 
 const Push = () => {
-    const [sign, setSign] = useState(false)
     const [email, setEmail] = useState('')
 
-    /*
-    useEffect(()=> {
-        auth.onAuthStateChanged(function(user) {
-          if(user) {
-            setSign(true)
-            setEmail(user.email)
-          } else {
+    const jwtCheck = () => {
+        if(localStorage.getItem('token') === null) {
             alert("로그인 후에 등록할 수 있습니다.")
-            setSign(false)
             window.location.replace("/")
-          }
-        })
+            return false
+        }
+    
+        var headers = {
+          'Content-Type': 'application/json',
+          'JWT': localStorage.getItem('token')
+        }
+    
+        axios.get("api/auth", { headers })
+          .then(res => {
+            if (res.data === localStorage.getItem('E-mail')) {
+                setEmail(localStorage.getItem('E-mail'))
+            }
+            else {
+                alert("로그인 후에 등록할 수 있습니다.")
+                window.location.replace("/")
+            }
+          })
+          .catch(err => {
+            alert("로그인 후에 등록할 수 있습니다.")
+            window.location.replace("/")
+          })
+    }
+
+    useEffect(()=> {
+        jwtCheck()
       }, [])
 
     const [inputs, setInputs] = useState({
@@ -42,24 +59,36 @@ const Push = () => {
             body: ''
         })
     }
-    */
-    /*
+
     const summit = () => {
-        if (tag !== "" && code !=="" && body !=="") {
-            firestore
-                .collection("stacktest")
-                .add({ tag: tag, code: code, body: body, email: email })
-                .then((res) => {
-                    alert("Successfully Pushed! :D")
+        var headers = {
+            'Content-Type': 'application/json',
+            'JWT': localStorage.getItem('token')
+        }
+
+        if (tag !== "" && code !== "" && body !== "") {
+
+            var request = {
+                "tag": tag,
+                "code": code,
+                "body": body,
+                "email": email
+            }
+
+            axios.post("stack/push", request, { headers })
+                .then(res => {
+                    console.log(res)
+                    alert("Stack Successfully Pushed!")
+                })
+                .catch(err => {
+                    alert("Stack Push Failed.")
                 })
             inputsReset()
         } else {
             alert("Please Check Your PUSH. :(")
         }
     }
-    */
 
-    /*
     return (
         <div className="form">
             <p> 등록자: {email}</p>
@@ -75,7 +104,6 @@ const Push = () => {
             </div>
         </div>
     )
-    */
 }
 
 export default Push;

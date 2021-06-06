@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
 import '../styles/community.css'
 
-/*
 <div className="form">
                     <p> 기여도 랭킹 </p>
                     <input />
                     <button> 커뮤니티 검색 </button>
                 </div>
-*/
+
 
 const Community = () => {
     return (

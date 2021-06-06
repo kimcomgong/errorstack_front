@@ -41,13 +41,13 @@ const Login = (props) => {
             "password": pw
         }
 
-        var a = JSON.stringify(request)
         var headers = {
             'Content-Type': 'application/json'
         }
 
-        axios.post("api/login", a , { headers })
+        axios.post("api/login", request , { headers })
             .then(res => {
+                console.log(res)
                 localStorage.setItem('token', res.data)
                 localStorage.setItem('E-mail', request.email)
                 alert("로그인을 성공하였습니다.")
@@ -67,12 +67,12 @@ const Login = (props) => {
             email: jid,
             password: jpw,
         }
-        var a = JSON.stringify(request)
+
         var headers = {
             'Content-Type': 'application/json'
         }
 
-        axios.post("api/register", a , { headers })
+        axios.post("api/register", request, { headers })
             .then(
                 res => {
                     alert("회원가입을 성공하였습니다.");
