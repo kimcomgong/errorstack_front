@@ -5,7 +5,7 @@ import Root from './Root'
 import reportWebVitals from './reportWebVitals'
 import axios from 'axios'
 
-axios.defaults.baseURL = 'https://18.220.24.219:8443/'
+axios.defaults.baseURL = 'https://error-stack.com:8443/'
 //axios.defaults.baseURL = 'http://localhost:8080/'
 
 ReactDOM.render(
